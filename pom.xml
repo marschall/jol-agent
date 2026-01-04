@@ -89,7 +89,8 @@
         <configuration>
           <publishingServerId>central</publishingServerId>
         </configuration>
-      </plugin><plugin>
+      </plugin>
+      <plugin>
         <artifactId>maven-failsafe-plugin</artifactId>
         <executions>
           <execution>
@@ -100,7 +101,7 @@
           </execution>
         </executions>
         <configuration>
-          <argLine>-javaagent:${project.build.directory}/${project.build.finalName}.jar --sun-misc-unsafe-memory-access=allow</argLine>
+          <argLine>-javaagent:${project.build.directory}/${project.build.finalName}.jar</argLine>
           <classpathDependencyExcludes>
             <classpathDependencyExclude>org.openjdk.jol:jol-core</classpathDependencyExclude>
             <classpathDependencyExclude>${project.groupId}:${project.artifactId}</classpathDependencyExclude>
@@ -126,16 +127,6 @@
         </executions>
       </plugin>
       <plugin>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>properties</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <artifactId>maven-shade-plugin</artifactId>
         <executions>
           <execution>
@@ -145,9 +136,7 @@
               <goal>shade</goal>
             </goals>
             <configuration>
-              <!--
-              <finalName>jol-agent</finalName>
-              -->
+              <useDependencyReducedPomInJar>true</useDependencyReducedPomInJar>
               <artifactSet>
                 <includes>
                   <include>org.openjdk.jol:jol-core</include>
@@ -202,10 +191,6 @@
           <version>3.14.1</version>
         </plugin>
         <plugin>
-          <artifactId>maven-dependency-plugin</artifactId>
-          <version>3.9.0</version>
-        </plugin>
-        <plugin>
           <artifactId>maven-deploy-plugin</artifactId>
           <version>3.1.4</version>
         </plugin>
@@ -216,7 +201,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>flatten-maven-plugin</artifactId>
-          <version>1.6.0</version>
+          <version>1.7.3</version>
         </plugin>
         <plugin>
           <artifactId>maven-gpg-plugin</artifactId>
@@ -281,6 +266,19 @@
                 </goals>
               </execution>
             </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>jdk-25</id>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <configuration>
+              <argLine>-javaagent:${project.build.directory}/${project.build.finalName}.jar --sun-misc-unsafe-memory-access=allow</argLine>
+            </configuration>
           </plugin>
         </plugins>
       </build>
