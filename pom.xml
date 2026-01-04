@@ -115,6 +115,7 @@
             <link>https://docs.oracle.com/javase/8/docs/api/</link>
           </links>
           <notimestamp>true</notimestamp>
+          <show>package</show>
         </configuration>
         <executions>
           <execution>
