@@ -1,4 +1,4 @@
-JOL Agent  [![Build Status](https://github.com/marschall/jol-agent/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/marschall/jol-agent/actions?query=branch%3Amaster) [![Maven Central](https://img.shields.io/maven-central/v/com.github.marschall/jol-agent?color=31c653&label=maven%20central)](https://central.sonatype.com/artifact/com.github.marschall/jol-agent)
+JOL Agent  [![Build Status](https://github.com/marschall/jol-agent/actions/workflows/maven.yml/badge.svg?branch=master)](https://github.com/marschall/jol-agent/actions?query=branch%3Amaster) [![Maven Central](https://img.shields.io/maven-central/v/com.github.marschall/jol-agent?color=31c653&label=maven%20central)](https://central.sonatype.com/artifact/com.github.marschall/jol-agent)
 =========
 
 A repackaging of [JOL](https://github.com/openjdk/jol) with the `Premain-Class` and `Launcher-Agent` headers set to get around the self-attach warnings.
